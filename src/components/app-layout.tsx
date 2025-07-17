@@ -52,14 +52,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <SidebarMenuItem key={item.href}>
                 <Link href={item.href} passHref legacyBehavior>
                   <SidebarMenuButton
-                    asChild
+                    as="a"
                     isActive={isActive}
                     tooltip={item.label}
                   >
-                    <div>
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.label}</span>
-                    </div>
+                    <item.icon className="h-5 w-5" />
+                    <span>{item.label}</span>
                   </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>
