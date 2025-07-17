@@ -4,7 +4,7 @@ import { AppLayout } from '@/components/app-layout';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'SudsTrack',
+  title: 'Punjab Soap',
   description: 'Track your soap business deliveries with ease.',
   manifest: '/manifest.json',
 };

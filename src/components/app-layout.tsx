@@ -33,19 +33,22 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="bg-primary text-primary-foreground p-2 rounded-lg">
                 <ShoppingCart className="h-6 w-6" />
             </div>
-            <h1 className="text-xl font-headline font-bold">SudsTrack</h1>
+            <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
           </div>
         </SidebarHeader>
         <SidebarMenu>
           {navItems.map((item) => (
             <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref legacyBehavior>
+              <Link href={item.href} passHref>
                 <SidebarMenuButton
+                  asChild
                   isActive={pathname === item.href}
                   tooltip={item.label}
                 >
-                  <item.icon />
-                  <span>{item.label}</span>
+                  <>
+                    <item.icon />
+                    <span>{item.label}</span>
+                  </>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
