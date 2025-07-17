@@ -50,7 +50,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
             return (
               <SidebarMenuItem key={item.href}>
-                <Link href={item.href} passHref>
+                <Link href={item.href} passHref legacyBehavior>
                   <SidebarMenuButton
                     asChild
                     isActive={isActive}
