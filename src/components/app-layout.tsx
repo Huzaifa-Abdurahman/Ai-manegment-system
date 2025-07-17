@@ -34,45 +34,48 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader className="p-4">
-          <div className="flex items-center gap-2">
-            <div className="bg-primary text-primary-foreground p-2 rounded-lg">
-              <ShoppingCart className="h-6 w-6" />
+      <div className="flex min-h-screen">
+        <Sidebar>
+          <SidebarHeader className="p-4">
+            <div className="flex items-center gap-2">
+              <div className="bg-primary text-primary-foreground p-2 rounded-lg">
+                <ShoppingCart className="h-6 w-6" />
+              </div>
+              <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
             </div>
-            <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
-          </div>
-        </SidebarHeader>
+          </SidebarHeader>
 
-        <SidebarMenu>
-          {navItems.map((item) => {
-            const isActive =
-              pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
-            return (
-              <SidebarMenuItem key={item.href}>
-                <Link href={item.href} passHref legacyBehavior>
-                  <SidebarMenuButton
-                    as="a"
-                    isActive={isActive}
-                    tooltip={item.label}
-                  >
-                    <item.icon className="h-5 w-5" />
-                    <span>{item.label}</span>
-                  </SidebarMenuButton>
-                </Link>
-              </SidebarMenuItem>
-            )
-          })}
-        </SidebarMenu>
-      </Sidebar>
-      <div className="flex flex-col flex-1">
-        <header className="flex items-center justify-between p-4 border-b md:justify-end">
-          <SidebarTrigger className="md:hidden" />
-          <div />
-        </header>
-        <SidebarInset>
-            {children}
-        </SidebarInset>
+          <SidebarMenu>
+            {navItems.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href))
+
+              return (
+                <SidebarMenuItem key={item.href}>
+                  <Link href={item.href}>
+                    <SidebarMenuButton isActive={isActive} tooltip={item.label}>
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.label}</span>
+                    </SidebarMenuButton>
+                  </Link>
+                </SidebarMenuItem>
+              )
+            })}
+          </SidebarMenu>
+        </Sidebar>
+
+        {/* Right Content Area */}
+        <div className="flex flex-col flex-1">
+          <header className="flex items-center justify-between p-4 border-b md:justify-end">
+            <SidebarTrigger className="md:hidden" />
+            <div className="font-semibold hidden md:block">Welcome Back!</div>
+          </header>
+
+          <SidebarInset>
+            <main className="flex-1 p-4 md:p-6 lg:p-8">{children}</main>
+          </SidebarInset>
+        </div>
       </div>
     </SidebarProvider>
   )
