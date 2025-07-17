@@ -12,7 +12,14 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart, Truck, Users, Lightbulb, FileText, ShoppingCart } from "lucide-react"
+import {
+  BarChart,
+  Truck,
+  Users,
+  Lightbulb,
+  FileText,
+  ShoppingCart,
+} from "lucide-react"
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: BarChart },
@@ -31,37 +38,40 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader className="p-4">
           <div className="flex items-center gap-2">
             <div className="bg-primary text-primary-foreground p-2 rounded-lg">
-                <ShoppingCart className="h-6 w-6" />
+              <ShoppingCart className="h-6 w-6" />
             </div>
             <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
           </div>
         </SidebarHeader>
+
         <SidebarMenu>
-          {navItems.map((item) => (
-            <SidebarMenuItem key={item.href}>
-              <Link href={item.href} passHref>
-                <SidebarMenuButton
-                  as="a"
-                  isActive={pathname === item.href}
-                  tooltip={item.label}
-                >
-                  <item.icon />
-                  <span>{item.label}</span>
-                </SidebarMenuButton>
-              </Link>
-            </SidebarMenuItem>
-          ))}
+          {navItems.map((item) => {
+            const isActive =
+              pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+            return (
+              <SidebarMenuItem key={item.href}>
+                <Link href={item.href} passHref>
+                  <SidebarMenuButton asChild isActive={isActive} tooltip={item.label}>
+                    <div>
+                        <item.icon className="h-5 w-5" />
+                        <span>{item.label}</span>
+                    </div>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+            )
+          })}
         </SidebarMenu>
       </Sidebar>
-      <SidebarInset>
+      <div className="flex flex-col flex-1">
         <header className="flex items-center justify-between p-4 border-b md:justify-end">
-            <SidebarTrigger className="md:hidden"/>
-            <div className="font-semibold">Welcome Back!</div>
+          <SidebarTrigger className="md:hidden" />
+          <div />
         </header>
-        <main className="flex-1 p-4 md:p-6 lg:p-8">
+        <SidebarInset>
             {children}
-        </main>
-      </SidebarInset>
+        </SidebarInset>
+      </div>
     </SidebarProvider>
   )
 }
