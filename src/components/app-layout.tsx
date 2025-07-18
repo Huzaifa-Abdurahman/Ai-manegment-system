@@ -54,8 +54,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
               return (
                 <SidebarMenuItem key={item.href}>
-                  <Link href={item.href} passHref legacyBehavior>
-                    <SidebarMenuButton as="a" isActive={isActive} tooltip={item.label}>
+                  <Link href={item.href}>
+                    <SidebarMenuButton isActive={isActive} tooltip={item.label}>
                       <item.icon className="h-5 w-5" />
                       <span>{item.label}</span>
                     </SidebarMenuButton>
@@ -66,7 +66,6 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </Sidebar>
 
-        {/* Right Content Area */}
         <div className="flex flex-col flex-1">
           <header className="flex items-center justify-between p-4 border-b md:justify-end">
             <SidebarTrigger className="md:hidden" />
