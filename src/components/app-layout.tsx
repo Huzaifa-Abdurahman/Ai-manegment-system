@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarInset,
 } from "@/components/ui/sidebar";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -27,17 +28,20 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen">
+        {/* Sidebar */}
         <Sidebar>
           <SidebarHeader className="p-4">
             <div className="flex items-center gap-2">
               <div className="bg-primary text-primary-foreground p-2 rounded-lg">
                 <ShoppingCart className="h-6 w-6" />
               </div>
-              <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
+              <h1 className="text-xl font-bold font-headline">Punjab Soap</h1>
             </div>
           </SidebarHeader>
 
+          {/* Sidebar Menu Items - No map used */}
           <SidebarMenu>
+
             <SidebarMenuItem>
               <SidebarMenuButton
                 asChild
@@ -102,14 +106,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
+
           </SidebarMenu>
         </Sidebar>
 
-        {/* Right Content Area */}
+        {/* Main Content Area */}
         <div className="flex flex-col flex-1">
           <header className="flex items-center justify-between p-4 border-b md:justify-end">
             <SidebarTrigger className="md:hidden" />
-            <div className="font-semibold hidden md:block">Welcome Back!</div>
+            <div className="hidden md:block font-semibold">Welcome Back!</div>
           </header>
 
           <SidebarInset>
