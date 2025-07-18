@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarInset,
 } from "@/components/ui/sidebar"
+
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
@@ -29,7 +30,7 @@ const navItems = [
   { href: "/reports", label: "Reports", icon: FileText },
 ]
 
-export function AppLayout({ children }: { children: React.ReactNode }) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   return (
@@ -41,7 +42,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <div className="bg-primary text-primary-foreground p-2 rounded-lg">
                 <ShoppingCart className="h-6 w-6" />
               </div>
-              <h1 className="text-xl font-headline font-bold">Punjab Soap</h1>
+              <h1 className="text-xl font-bold">Punjab Soap</h1>
             </div>
           </SidebarHeader>
 
@@ -50,7 +51,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               const isActive =
                 item.href === "/"
                   ? pathname === item.href
-                  : pathname.startsWith(item.href);
+                  : pathname.startsWith(item.href)
 
               return (
                 <SidebarMenuItem key={item.href}>
@@ -66,6 +67,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarMenu>
         </Sidebar>
 
+        {/* Right Content */}
         <div className="flex flex-col flex-1">
           <header className="flex items-center justify-between p-4 border-b md:justify-end">
             <SidebarTrigger className="md:hidden" />
