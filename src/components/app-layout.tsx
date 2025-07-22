@@ -14,6 +14,9 @@ import {
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
+  // Log pathname for debugging
+  console.log("Current pathname:", pathname);
+
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -26,55 +29,24 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         <nav className="p-4 space-y-2">
-          <Link
-            href="/"
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
-              pathname === "/" ? "bg-muted font-semibold" : ""
-            }`}
-          >
-            <BarChart className="h-5 w-5" />
-            <span>Dashboard</span>
-          </Link>
-
-          <Link
-            href="/deliveries"
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
-              pathname === "/deliveries" ? "bg-muted font-semibold" : ""
-            }`}
-          >
-            <Truck className="h-5 w-5" />
-            <span>Deliveries</span>
-          </Link>
-
-          <Link
-            href="/contacts"
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
-              pathname === "/contacts" ? "bg-muted font-semibold" : ""
-            }`}
-          >
-            <Users className="h-5 w-5" />
-            <span>Contacts</span>
-          </Link>
-
-          <Link
-            href="/ai-suggestions"
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
-              pathname === "/ai-suggestions" ? "bg-muted font-semibold" : ""
-            }`}
-          >
-            <Lightbulb className="h-5 w-5" />
-            <span>AI Suggestions</span>
-          </Link>
-
-          <Link
-            href="/reports"
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
-              pathname === "/reports" ? "bg-muted font-semibold" : ""
-            }`}
-          >
-            <FileText className="h-5 w-5" />
-            <span>Reports</span>
-          </Link>
+          {[
+            { href: "/", label: "Dashboardcez            Dashboard", icon: BarChart },
+            { href: "/deliveries", label: "Deliveries", icon: Truck },
+            { href: "/contacts", label: "Contacts", icon: Users },
+            { href: "/ai-suggestions", label: "AI Suggestions", icon: Lightbulb },
+            { href: "/reports", label: "Reports", icon: FileText },
+          ].map(({ href, label, icon: Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-muted ${
+                pathname === href ? "bg-muted font-semibold" : ""
+              }`}
+            >
+              <Icon className="h-5 w-5" />
+              <span>{label}</span>
+            </Link>
+          ))}
         </nav>
       </aside>
 
