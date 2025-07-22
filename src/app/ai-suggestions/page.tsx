@@ -1,3 +1,4 @@
+"use client"
 import AiSuggestions from "@/components/ai-suggestions";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
