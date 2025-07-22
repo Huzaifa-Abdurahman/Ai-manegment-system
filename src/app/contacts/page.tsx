@@ -1,4 +1,5 @@
-import ContactsList from "@/components/contacts-list";
+"use client"
+  import ContactsList from "@/components/contacts-list";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function ContactsPage() {
