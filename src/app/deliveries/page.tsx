@@ -1,3 +1,4 @@
+"use client"
 import DeliveryForm from "@/components/delivery-form";
 import DeliveriesTable from "@/components/deliveries-table";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
